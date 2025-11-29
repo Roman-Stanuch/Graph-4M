@@ -205,3 +205,35 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Byte-compiled / optimized / compiled files
+*.pyc
+__pycache__/
+*.o
+*.so
+
+# Environments
+.env
+venv/
+env/
+.venv/
+
+# Database
+db.sqlite3
+
+# Media files
+media/
+
+# Static files (if collected to a separate directory not meant for version control)
+staticfiles/
+
+# Logs
+*.log
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
