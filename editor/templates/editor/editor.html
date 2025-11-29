@@ -1,0 +1,31 @@
+{% extends "bootstrap_base.html" %}
+
+{% block title %}
+    Graph4M Editor
+{% endblock %}
+
+{% block body %}
+    {{ user }}
+
+    <form action="" method="post" autocomplete="off">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit">
+    </form>
+
+    <script src="https://www.desmos.com/api/v1.1/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+    <div id="calculator" style="width: 100vw; height: 90vh;"></div>
+    <script>
+        const user_field = document.getElementById("id_user")
+        const name_field = document.getElementById("id_name")
+        const state_field = document.getElementById("id_state")
+        user_field.value = "{{ user.name }}"
+        name_field.value = "{{ name }}"
+
+        const calculator = Desmos.GraphingCalculator(document.getElementById('calculator'))
+        calculator.observeEvent('change', () => {
+            state_field.value = JSON.stringify(calculator.getState())
+        })
+        calculator.setState({{ state|safe }})
+    </script>
+{% endblock %}
